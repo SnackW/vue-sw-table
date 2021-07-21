@@ -79,7 +79,7 @@ options效果如下：
 
 ![效果图1](https://github.com/SwMango/vue-sw-formlist/blob/master/public/images/ex1.png?raw=true)
 
-> 再来看个简单的例子
+> 再来看个稍微复杂的例子
 ```
 options: [
         { l: '序号', order: true, width: 70 },
@@ -107,11 +107,56 @@ options: [
           e_style: { width: '150px' },
           width: 180,
         },
+        {
+          l: '多功能',
+          s: [
+            {
+              l: '超文本',
+              link: true,
+              link_t: ({ row }) => {
+                return row.name
+              },
+              width: 120,
+            },
+            {
+              l: '按钮',
+              button: true,
+              hidden: ({ index }) => {
+                if ([0, 1, 2, 3, 4, 5, 6].includes(index)) {
+                  return false
+                } else {
+                  return true
+                }
+              },
+              button_t: ({ row }) => {
+                return row.name
+              },
+              button_type: ({ index }) => {
+                if ([0, 1, 2].includes(index)) {
+                  return 'danger'
+                } else {
+                  return 'primary'
+                }
+              },
+              button_Func: ({ row, index }) => {
+                console.log('点击了' + index + '行：' + row)
+              },
+            },
+
+            {
+              l: '多个',
+              s: [
+                { l: '多个超文本', link: [{ link_t: 'link1' }, { link_t: 'link3' }, { link_t: 'link3' }], gutter: 20 },
+                { l: '多个按钮', button: [{ button_t: 'btn1' }, { button_t: 'btn2' }], gutter: 10 },
+              ],
+            },
+          ],
+        },
       ],
 ```
-options效果如下：
+根据以上options效果如下：
 
-![效果图2](https://github.com/SwMango/vue-sw-formlist/blob/master/public/images/ex2.png?raw=true)
+![效果图2](https://github.com/SwMango/vue-sw-formlist/blob/master/public/images/ex3.png?raw=true)
 
 
 ======================================
