@@ -327,7 +327,7 @@ options: [
 
 > select:true 选择器
 >
-> options 格式为 [{name:'',value:''}]
+> arr 格式为 [{name:'',value:''}]
 >
 > clearable 允许清空
 >
@@ -335,7 +335,7 @@ options: [
 >
 > multiple 允许多选
 
-`{ l: '', p: '', select: true, options: [], width: 150 , clearable: true, multiple: true,disabled: true }`
+`{ l: '', p: '', select: true, arr: [], width: 150 , clearable: true, multiple: true,disabled: true }`
 
 
 ### trans 转换文本
