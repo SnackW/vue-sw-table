@@ -48,6 +48,8 @@ data() {
       ]
     }
 ```
+![图3 复制图片地址](https://github.com/SkyeMango/vue-sw-formlist/public/images/ex1.png?raw=true)
+
 
 ======================================
 ### l
