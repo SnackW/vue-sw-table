@@ -355,8 +355,10 @@ options: [
 `{style: ({ row }) => { return {'font-size':row.size+'px'}}}`
 
 ## #
->有问题欢迎一起讨论：
+>坐标沈阳、有问题欢迎一起讨论：
 >
 >QQ:415333856 
 >
 >wx同号
+>
+>
