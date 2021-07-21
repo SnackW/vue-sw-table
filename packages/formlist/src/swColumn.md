@@ -106,37 +106,6 @@
 
 `{link:true link_t:({el,row,index})=>{},link_noti:'',link_type:''}` 传入回调（link_t,link_type）的回调
 
-### trans 转换文本
-
-> trans_map：传入的对象 根据 ‘p’ 值转换成对应的文本（多用于状态：数字转文本） 下列'p'为 1 时，当前列行显示'aaa'
-
-`{trans:true,trans_map:{'1':'aaa','2':'bbb'}}`
-
-### width 列宽度
-
-> 非必要 默认''
-
-`{width:100}`
-
-### align 文本对齐
-
-> 非必要 默认 left
-
-`{align:'center'}`
-
-### fixed 左右固定悬浮
-
-> 非必要 默认 无悬浮
-
-`{fixed:true}`
-
-### style 传入样式
-
-> css style 样式 传入对象 默认{}
-
-`{style: {'font-size':15+'px'}}`
-
-`{style: ({ row }) => { return {'font-size':row.size+'px'}}}`
 
 ### check 选择框（多选）
 
@@ -179,3 +148,37 @@
 > multiple 允许多选
 
 `{ l: '', p: '', select: true, options: [], width: 150 , clearable: true, multiple: true,disabled: true }`
+
+
+### trans 转换文本
+
+> trans_map：传入的对象 根据 ‘p’ 值转换成对应的文本（多用于状态：数字转文本） 下列'p'为 1 时，当前列行显示'aaa'
+
+`{trans:true,trans_map:{'1':'aaa','2':'bbb'}}`
+
+### width 列宽度
+
+> 非必要 默认''
+
+`{width:100}`
+
+### align 文本对齐
+
+> 非必要 默认 left
+
+`{align:'center'}`
+
+### fixed 左右固定悬浮
+
+> 非必要 默认 无悬浮
+
+`{fixed:true}`
+
+### style 传入样式
+
+> css style 样式 传入对象 默认{}
+
+`{style: {'font-size':15+'px'}}`
+
+`{style: ({ row }) => { return {'font-size':row.size+'px'}}}`
+

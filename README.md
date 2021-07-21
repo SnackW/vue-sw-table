@@ -1,6 +1,16 @@
 # vue-sw-formlist
 
 > 注：此组件基于element-ui，对el-table二次封装，需要安装element-ui（2.10.0及以上）
+>
+```
+ 当前版本支持大部分的表格操作，例如：显示文本（p）、编辑数字（e_n）、编辑文本（e_t）、日期选择（e_date）、下拉选择（select）、多选（check）、文本链接（link）、按钮（button）等...
+
+```
+
+```
+ 对应详细用法请见下列说明（待补充）
+```
+
 
 ## 项目安装
 ```
@@ -48,6 +58,11 @@ data() {
       ]
     }
 ```
+
+效果如下：
+
+![效果图](https://github.com/SwMango/vue-sw-formlist/blob/master/public/images/ex1.png?raw=true)
+
 
 ======================================
 ### l
@@ -116,6 +131,28 @@ data() {
 
 `{e_t:true,iFunc:({val,row,index})=>{}}`
 
+### button
+
+> 可触发事件按钮
+>
+> button :'true' or '[]' (true：只创建一个 button，[]：根据数组内的个数创建对应个数的 button； eg: {button[{ button_t:'',button_noti:'',button_type:''}]})
+>
+> gutter: 0(默认) 当 button 传入数组时 gutter 表示 button 间隔 px(单位默认'px')
+>
+> button_t：显示的链接文本'string' or 传入一个有返回值的函数'function'（用于处理不同条件下文本的显示）(返回值：{row,el,index} row：行 el：传入的该列配置 index：下标)
+>
+> button_noti：父类传入的回调名 用于触发事件的回调 返回值：{ row, el, index } --- row：行子对象 el：列配置 index：下标
+>
+> button_type：button 的类型 （默认：primary）:primary success warning danger info
+>
+> button_Func：button 的事件回调 （默认不写的话走：button_noti） 回调参数为 { row,el,index }
+
+`{button:true button_t:'',button_noti:'',button_type:'',button_Func:({ row })=>{}}` 创建一个 button
+
+`{button:[{button_t:'',button_noti:'',button_type:''}],gutter:'10',}` 一列中创建多个 button，gutter 为每个 button 的间隔
+
+`{button:true button_t:({el,row,index})=>{},button_noti:'',button_type:''}` 传入回调（button_t,button_type）的回调
+
 ### link
 
 > 可触发事件链接
@@ -136,37 +173,6 @@ data() {
 
 `{link:true link_t:({el,row,index})=>{},link_noti:'',link_type:''}` 传入回调（link_t,link_type）的回调
 
-### trans 转换文本
-
-> trans_map：传入的对象 根据 ‘p’ 值转换成对应的文本（多用于状态：数字转文本） 下列'p'为 1 时，当前列行显示'aaa'
-
-`{trans:true,trans_map:{'1':'aaa','2':'bbb'}}`
-
-### width 列宽度
-
-> 非必要 默认''
-
-`{width:100}`
-
-### align 文本对齐
-
-> 非必要 默认 left
-
-`{align:'center'}`
-
-### fixed 左右固定悬浮
-
-> 非必要 默认 无悬浮
-
-`{fixed:true}`
-
-### style 传入样式
-
-> css style 样式 传入对象 默认{}
-
-`{style: {'font-size':15+'px'}}`
-
-`{style: ({ row }) => { return {'font-size':row.size+'px'}}}`
 
 ### check 选择框（多选）
 
@@ -209,3 +215,37 @@ data() {
 > multiple 允许多选
 
 `{ l: '', p: '', select: true, options: [], width: 150 , clearable: true, multiple: true,disabled: true }`
+
+
+### trans 转换文本
+
+> trans_map：传入的对象 根据 ‘p’ 值转换成对应的文本（多用于状态：数字转文本） 下列'p'为 1 时，当前列行显示'aaa'
+
+`{trans:true,trans_map:{'1':'aaa','2':'bbb'}}`
+
+### width 列宽度
+
+> 非必要 默认''
+
+`{width:100}`
+
+### align 文本对齐
+
+> 非必要 默认 left
+
+`{align:'center'}`
+
+### fixed 左右固定悬浮
+
+> 非必要 默认 无悬浮
+
+`{fixed:true}`
+
+### style 传入样式
+
+> css style 样式 传入对象 默认{}
+
+`{style: {'font-size':15+'px'}}`
+
+`{style: ({ row }) => { return {'font-size':row.size+'px'}}}`
+
