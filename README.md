@@ -156,7 +156,7 @@ options: [
 ```
 根据以上options效果如下：
 
-![效果图2](https://github.com/SwMango/vue-sw-formlist/blob/master/public/images/ex3.png?raw=true)
+![效果图2](https://github.com/SwMango/vue-sw-formlist/blob/master/public/images/ex2.png?raw=true)
 
 
 ======================================

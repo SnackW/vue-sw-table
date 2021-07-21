@@ -18,15 +18,29 @@ export default {
   data() {
     return {
       // options: [
-      //   { l: '序号', order: true, width: 70 },
+      //   { l: '序号', order: true, width: 70, align: 'center'  },
       //   { l: '姓名', p: 'name' },
       //   { l: '年龄', p: 'age', e_n: true },
       //   { l: '性别', p: 'sex' },
       //   { l: '电话', p: 'tel' },
       // ],
       options: [
-        { l: '序号', order: true, width: 70 },
-        { l: '姓名', p: 'name' },
+        { l: '序号', order: true, width: 70, align: 'center' },
+        {
+          l: '姓名',
+          p: ({ row }) => {
+            return row.name
+          },
+          style: ({ row }) => {
+            if (['雷泽'].includes(row.name)) {
+              return { color: 'red', 'font-weight': 600, 'font-size': '21px' }
+            } else if (['立本'].includes(row.name)) {
+              return { color: 'black', 'font-weight': 600, 'font-size': '16px' }
+            } else if (['罗莎莉亚'].includes(row.name)) {
+              return { color: 'orange', 'font-size': '19px' }
+            }
+          },
+        },
         { l: '年龄', p: 'age', e_n: true, width: 80 },
         { l: '性别', p: 'sex', width: 80 },
         {
