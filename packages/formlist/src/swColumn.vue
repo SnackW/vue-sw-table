@@ -380,7 +380,11 @@ export default {
     },
     // todo 触发名为'noti_bus_link'的公共通讯 传入参数 '{ el, row, index }'
     linkAction(el, row, index) {
-      bus.$emit('noti_bus_link', { el, row, index })
+      if (el.link_Func) {
+        return el.link_Func({ el, row, index })
+      } else {
+        bus.$emit('noti_bus_link', { el, row, index })
+      }
     },
     // todo 默认触发button_Func 没有配置则触发名为'noti_bus_button'的公共通讯 传入参数 '{ el, row, index }'
     buttonAction(el, row, index) {

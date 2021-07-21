@@ -99,12 +99,14 @@
 > link_noti：父类传入的回调名 用于触发事件的回调 返回值：{ row, el, index } --- row：行子对象 el：列配置 index：下标
 >
 > link_type：link 的类型 （默认：primary）:primary success warning danger info
+>
+> link_Func：点击link的回调
 
 `{link:true link_t:'',link_noti:'',link_type:''}` 创建一个 link
 
 `{link:[{link_t:'',link_noti:'',link_type:''}],gutter:'10',}` 一列中创建多个 link，gutter 为每个 link 的间隔
 
-`{link:true link_t:({el,row,index})=>{},link_noti:'',link_type:''}` 传入回调（link_t,link_type）的回调
+`{link:true link_t:({el,row,index})=>{},link_Func:({row})=>{},link_type:''}` 传入回调（link_t,link_type）的回调
 
 
 ### check 选择框（多选）
