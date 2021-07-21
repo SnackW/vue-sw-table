@@ -48,7 +48,7 @@ data() {
       ]
     }
 ```
-![效果图](https://github.com/SwMango/vue-sw-formlist/public/images/ex1.png?raw=true)
+![效果图](https://github.com/SwMango/vue-sw-formlist/blob/master/public/images/ex1.png?raw=true)
 
 
 ======================================
