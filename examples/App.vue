@@ -17,6 +17,13 @@ export default {
   components: {},
   data() {
     return {
+      // options: [
+      //   { l: '序号', order: true, width: 70 },
+      //   { l: '姓名', p: 'name' },
+      //   { l: '年龄', p: 'age', e_n: true },
+      //   { l: '性别', p: 'sex' },
+      //   { l: '电话', p: 'tel' },
+      // ],
       options: [
         { l: '序号', order: true, width: 70 },
         { l: '姓名', p: 'name' },
