@@ -191,6 +191,22 @@ data() {
 >
 > format 格式
 >
+> datetype:date month 默认 date
+>
 > e_style:{width:120} datepicker 的 style 为对象 默认{width:120}
 
 `{ l: '', e_date : true, valueFormat: 'yyyyMMdd', format: 'yyyyMMdd',e_style: {width:'120px'}},`
+
+### select 选择器
+
+> select:true 选择器
+>
+> options 格式为 [{name:'',value:''}]
+>
+> clearable 允许清空
+>
+> disabled 禁用
+>
+> multiple 允许多选
+
+`{ l: '', p: '', select: true, options: [], width: 150 , clearable: true, multiple: true,disabled: true }`
