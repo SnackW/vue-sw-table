@@ -3,8 +3,16 @@
 > 注：此组件基于element-ui，对el-table二次封装，需要安装element-ui（2.10.0及以上）
 >
 ```
- 当前版本支持大部分的表格操作，例如：显示文本（p）、编辑数字（e_n）、编辑文本（e_t）、日期选择（e_date）、下拉选择（select）、多选（check）、文本链接（link）、按钮（button）等...
-
+ 当前版本支持大部分的表格操作，例如：
+ 显示文本（p）、
+ 编辑数字（e_n）、
+ 编辑文本（e_t）、
+ 日期选择（e_date）、
+ 下拉选择（select）、
+ 多选（check）、
+ 文本链接（link）、
+ 按钮（button）
+ 等...
 ```
 
 ```
@@ -58,8 +66,6 @@ data() {
       ]
     }
 ```
-![效果图](https://github.com/SwMango/vue-sw-formlist/blob/master/public/images/ex1.png?raw=true)
-
 
 效果如下：
 
