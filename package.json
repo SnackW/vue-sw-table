@@ -1,14 +1,26 @@
 {
   "name": "vue-sw-formlist",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.1.4",
+  "private": false,
+  "main": "./packages",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name vue-sw-formlist --dest lib packages/index.js"
   },
+  "description": "A tablelist basic el-table",
+  "keywords": [
+    "vue",
+    "el-table",
+    "formlist",
+    "vue-sw-formlist",
+    "sw-formlist",
+    "skyewang"
+  ],
   "dependencies": {
     "core-js": "^3.6.5",
+    "element-ui": "^2.15.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {
