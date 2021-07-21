@@ -1,8 +1,12 @@
 {
   "name": "vue-sw-formlist",
-  "version": "1.1.4",
+  "version": "1.1.6",
   "private": false,
   "main": "./packages",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SwMango/vue-sw-formlist"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
