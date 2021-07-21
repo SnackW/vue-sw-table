@@ -63,7 +63,25 @@ data() {
         {l:'性别',p:'sex'},
         {l:'电话',p:'tel'},
       ],
-      options1: [
+      data:[
+       { name: '甘尼特', age: '14', sex: '男', tel: '13100009999', brithday: '1999-01-03' },
+        { name: '甘雨', age: '15', sex: '女', tel: '13877776666', brithday: '1999-01-03' },
+        { name: '钟离', age: '22', sex: '男', tel: '13977772222', brithday: '1999-01-03' },
+        { name: '尤拉', age: '20', sex: '女', tel: '13099002288', brithday: '1999-01-03' },
+        { name: '雷泽', age: '17', sex: '男', tel: '15188776655', brithday: '1999-01-03' },
+        { name: '罗莎莉亚', age: '21', sex: '女', tel: '17266554433', brithday: '1999-01-03' },
+        { name: '立本', age: '33', sex: '男', tel: '12345678901', brithday: '1999-01-03' },
+      ]
+    }
+```
+
+options效果如下：
+
+![效果图1](https://github.com/SwMango/vue-sw-formlist/blob/master/public/images/ex1.png?raw=true)
+
+> 再来看个简单的例子
+```
+options: [
         { l: '序号', order: true, width: 70 },
         { l: '姓名', p: 'name' },
         { l: '年龄', p: 'age', e_n: true, width: 80 },
@@ -90,38 +108,23 @@ data() {
           width: 180,
         },
       ],
-      data:[
-       { name: '甘尼特', age: '14', sex: '男', tel: '13100009999', brithday: '1999-01-03' },
-        { name: '甘雨', age: '15', sex: '女', tel: '13877776666', brithday: '1999-01-03' },
-        { name: '钟离', age: '22', sex: '男', tel: '13977772222', brithday: '1999-01-03' },
-        { name: '尤拉', age: '20', sex: '女', tel: '13099002288', brithday: '1999-01-03' },
-        { name: '雷泽', age: '17', sex: '男', tel: '15188776655', brithday: '1999-01-03' },
-        { name: '罗莎莉亚', age: '21', sex: '女', tel: '17266554433', brithday: '1999-01-03' },
-        { name: '立本', age: '33', sex: '男', tel: '12345678901', brithday: '1999-01-03' },
-        { name: '心海', age: '33', sex: '男', tel: '12345678901', brithday: '1999-01-03' },
-        { name: '刻晴', age: '33', sex: '男', tel: '12345678901', brithday: '1999-01-03' },
-        { name: '岩主', age: '33', sex: '男', tel: '12345678901', brithday: '1999-01-03' },
-        { name: '神里绫华', age: '33', sex: '男', tel: '12345678901', brithday: '1999-01-03' },
-        { name: '早柚', age: '33', sex: '男', tel: '12345678901', brithday: '1999-01-03' },
-        { name: '香菱', age: '33', sex: '男', tel: '12345678901', brithday: '1999-01-03' },
-        { name: '琴', age: '33', sex: '男', tel: '12345678901', brithday: '1999-01-03' },
-        { name: '巴巴托斯', age: '33', sex: '男', tel: '12345678901', brithday: '1999-01-03' }
-      ]
-    }
 ```
-
 options效果如下：
-
-![效果图1](https://github.com/SwMango/vue-sw-formlist/blob/master/public/images/ex1.png?raw=true)
-
->
-options1效果如下：
 
 ![效果图2](https://github.com/SwMango/vue-sw-formlist/blob/master/public/images/ex2.png?raw=true)
 
 
 ======================================
+
 ### 参数详情
+> 根据需求配置 option 来改变表格的样式，因为是基于el-table的二次封装，
+>
+> 对于el-table的大部分属性都相同适用，另外加入了简单的配置比如：width、style、align等...
+>
+> 详细配置的参数可以耐心的看下面详解
+>
+
+
 ### l
 
 > label 显示的列头文本》
