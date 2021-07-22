@@ -43,7 +43,7 @@ Vue.use(formlist)
 > 
 > 其中tableData为传入的数据源（也可以使用属性listdata来赋值）
 > 
->先看看下面两组 options 和 options1 的配置带你简单体验一下
+> 下面上代码看效果
 
 ```
 template:
