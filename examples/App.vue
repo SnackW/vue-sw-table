@@ -49,9 +49,7 @@ export default {
           width: 120,
           e_t: ({ row, index }) => {
             console.log(row)
-            if ([0, 1, 2].includes(index)) {
-              return true
-            }
+            return !![0, 1, 2].includes(index)
           },
         },
         {
@@ -79,21 +77,13 @@ export default {
               l: '按钮',
               button: true,
               hidden: ({ index }) => {
-                if ([0, 1, 2, 3, 4, 5, 6].includes(index)) {
-                  return false
-                } else {
-                  return true
-                }
+                return !![0, 1, 2, 3, 4, 5, 6].includes(index)
               },
               button_t: ({ row }) => {
                 return row.name
               },
               button_type: ({ index }) => {
-                if ([0, 1, 2].includes(index)) {
-                  return 'danger'
-                } else {
-                  return 'primary'
-                }
+                return [0, 1, 2].includes(index) ? 'danger' : 'primary'
               },
               button_Func: ({ row, index }) => {
                 console.log('点击了' + index + '行：' + row)
@@ -130,7 +120,7 @@ export default {
     }
   },
   mounted() {
-    // this.$refs.formlist.listdata =
+    // todo
   },
 }
 </script>

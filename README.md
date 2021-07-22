@@ -8,15 +8,15 @@
 
 ```
  当前版本支持大部分的表格操作，例如：
- 显示文本（p）、
- 编辑数字（e_n）、
- 编辑文本（e_t）、
- 日期选择（e_date）、
- 下拉选择（select）、
- 多选（check）、
- 文本链接（link）、
- 按钮（button）
- 等...
+ 显示文本（p）、编辑数字（e_n）、编辑文本（e_t）、日期选择（e_date）、下拉选择（select）、
+ 多选（check）、文本链接（link）、按钮（button）等...
+```
+
+```
+ 下载源码后
+ 启动项目：npm run serve
+ demo配置路径：examples/App.vue
+ 组件路径：packages/formlist/src/
 ```
 
 ```
@@ -106,9 +106,7 @@ options: [
           width: 120,
           e_t: ({ row, index }) => {
             console.log(row)
-            if ([0, 1, 2].includes(index)) {
-              return true
-            }
+            return !![0, 1, 2].includes(index)
           },
         },
         {
@@ -136,21 +134,13 @@ options: [
               l: '按钮',
               button: true,
               hidden: ({ index }) => {
-                if ([0, 1, 2, 3, 4, 5, 6].includes(index)) {
-                  return false
-                } else {
-                  return true
-                }
+                return !![0, 1, 2, 3, 4, 5, 6].includes(index)
               },
               button_t: ({ row }) => {
                 return row.name
               },
               button_type: ({ index }) => {
-                if ([0, 1, 2].includes(index)) {
-                  return 'danger'
-                } else {
-                  return 'primary'
-                }
+                return [0, 1, 2].includes(index) ? 'danger' : 'primary'
               },
               button_Func: ({ row, index }) => {
                 console.log('点击了' + index + '行：' + row)
