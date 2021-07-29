@@ -169,7 +169,7 @@
 
 <script>
 import bus from './js/bus'
-import { getAlignBy_l } from './js/formlist'
+import { getAlignBy_l } from './js/table'
 export default {
   name: 'Swcolumns',
   props: {

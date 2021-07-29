@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
-import formlist from '../packages'
+import swtable from '../packages'
 import element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.config.productionTip = false
-Vue.use(formlist)
+Vue.use(swtable)
 Vue.use(element)
 new Vue({
   render: h => h(App),

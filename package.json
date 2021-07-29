@@ -1,25 +1,25 @@
 {
-  "name": "vue-sw-formlist",
-  "version": "1.1.6",
+  "name": "vue-sw-table",
+  "version": "1.1.7",
   "private": false,
   "main": "./packages",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SwMango/vue-sw-formlist"
+    "url": "https://github.com/SwMango/vue-sw-table"
   },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name vue-sw-formlist --dest lib packages/index.js"
+    "lib": "vue-cli-service build --target lib --name vue-sw-table --dest lib packages/index.js"
   },
   "description": "A tablelist basic el-table",
   "keywords": [
     "vue",
     "el-table",
-    "formlist",
-    "vue-sw-formlist",
-    "sw-formlist",
+    "table",
+    "vue-sw-table",
+    "sw-table",
     "skyewang"
   ],
   "dependencies": {

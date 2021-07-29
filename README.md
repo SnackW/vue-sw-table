@@ -1,4 +1,4 @@
-# vue-sw-formlist
+# vue-sw-table
 
 >
 >
@@ -16,7 +16,7 @@
  下载源码后
  启动项目：npm run serve
  demo配置路径：examples/App.vue
- 组件路径：packages/formlist/src/
+ 组件路径：packages/swTable/src/
 ```
 
 ```
@@ -26,15 +26,15 @@
 
 ## 项目安装
 ```
-npm install vue-sw-formlist
+npm install vue-sw-table
 ```
 
 ## 在main.js中引入并使用
 ```
-import formlist from 'vue-sw-formlist'
+import table from 'vue-sw-table'
 ```
 ```
-Vue.use(formlist)
+Vue.use(table)
 ```
 
 ## 组件用法及用例
@@ -48,7 +48,7 @@ Vue.use(formlist)
 ```
 template:
 
-<vue-sw-formlist :options="options" :table-data="data"></vue-sw-formlist>
+<vue-sw-table :options="options" :table-data="data"></vue-sw-table>
 
 
 
@@ -77,7 +77,7 @@ data() {
 
 options效果如下：
 
-![效果图1](https://github.com/SwMango/vue-sw-formlist/blob/master/public/images/ex1.png?raw=true)
+![效果图1](https://github.com/SwMango/vue-sw-table/blob/master/public/images/ex1.png?raw=true)
 
 > 再来看个稍微复杂的例子
 ```
@@ -160,7 +160,7 @@ options: [
 ```
 根据以上options效果如下：
 
-![效果图2](https://github.com/SwMango/vue-sw-formlist/blob/master/public/images/ex2.png?raw=true)
+![效果图2](https://github.com/SwMango/vue-sw-table/blob/master/public/images/ex2.png?raw=true)
 
 
 ======================================

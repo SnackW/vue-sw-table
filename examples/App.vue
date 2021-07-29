@@ -7,7 +7,7 @@
       <el-table-column prop="tel" label="电话" width="width"> </el-table-column>
     </el-table> -->
     <span>--------------------</span>
-    <vue-sw-formlist :options="options" :table-data="list"></vue-sw-formlist>
+    <vue-sw-table :options="options" :table-data="list"></vue-sw-table>
   </div>
 </template>
 

@@ -32,7 +32,7 @@
 </template>
 <script>
 import bus from './js/bus'
-import { getTableRowClass } from './js/formlist'
+import { getTableRowClass } from './js/table'
 // swColumn 为 递归组件 父子组件用公共通信类 bus.js 通信
 import swcolumns from './swColumn'
 // ps 为父及递归子组件的所有props值，由此定义并传入
@@ -41,7 +41,7 @@ const ps = {
   textSet: {}, // 文本集合
 }
 export default {
-  name: 'vue-sw-formlist',
+  name: 'vue-sw-table',
   components: {
     swcolumns,
   },
@@ -161,8 +161,8 @@ export default {
      * ******需要注意*******
      * ********************
      *
-     * 当有多个formlist在同一路由中 其中一个注销通讯后 会导致其他formlist也注销通讯 故此处在销毁时不去注销通讯
-     * 在同一路由中如果存在多个formlist 请尽量保持'link_noti'取名不同
+     * 当有多个table在同一路由中 其中一个注销通讯后 会导致其他table也注销通讯 故此处在销毁时不去注销通讯
+     * 在同一路由中如果存在多个table 请尽量保持'link_noti'取名不同
      * */
     // bus.$off('noti_bus_link')
   },
