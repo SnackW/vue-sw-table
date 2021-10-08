@@ -105,7 +105,7 @@ export default {
         { name: '甘雨', age: '15', sex: '女', tel: '13877776666', brithday: '1999-01-03' },
         { name: '钟离', age: '22', sex: '男', tel: '13977772222', brithday: '1999-01-03' },
         { name: '尤拉', age: '20', sex: '女', tel: '13099002288', brithday: '1999-01-03' },
-        { name: '心海', age: '17', sex: '男', tel: '15188776655', brithday: '1999-01-03' },
+        { name: '雷泽', age: '17', sex: '男', tel: '15188776655', brithday: '1999-01-03' },
         { name: '罗莎莉亚', age: '21', sex: '女', tel: '17266554433', brithday: '1999-01-03' },
         { name: '立本', age: '33', sex: '男', tel: '12345678901', brithday: '1999-01-03' },
         { name: '心海', age: '33', sex: '男', tel: '12345678901', brithday: '1999-01-03' },
