@@ -77,7 +77,7 @@ data() {
 
 options效果如下：
 
-![效果图1](https://github.com/SwMango/vue-sw-table/blob/master/public/images/ex1.png?raw=true)
+![效果图1](https://github.com/SwMango/vue-sw-table/blob/master/public/images/ex01.png?raw=true)
 
 > 再来看个稍微复杂的例子
 ```
@@ -160,7 +160,7 @@ options: [
 ```
 根据以上options效果如下：
 
-![效果图2](https://github.com/SwMango/vue-sw-table/blob/master/public/images/ex2.png?raw=true)
+![效果图2](https://github.com/SwMango/vue-sw-table/blob/master/public/images/ex02.png?raw=true)
 
 
 ======================================
