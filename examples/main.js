@@ -8,5 +8,5 @@ Vue.config.productionTip = false
 Vue.use(swtable)
 Vue.use(element)
 new Vue({
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app')

@@ -2,7 +2,7 @@
 import swTable from './src/swTable.vue'
 
 // 为组件提供 install 安装方法，供按需引入
-swTable.install = function (Vue) {
+swTable.install = function(Vue) {
   Vue.component(swTable.name, swTable)
 }
 

@@ -6,15 +6,16 @@
     :align="getAlign(columnEl)"
     :type="getType(columnEl)"
     :reserve-selection="true"
+    :sortable="getSortable(columnEl)"
   >
     <template v-if="columnEl.checkHeader" slot="header">
-      <el-checkbox :disabled="columnEl.headerDisabled" :v-model="colCheckHeader" @change="checkHeaderChange()"></el-checkbox>
+      <el-checkbox :disabled="columnEl.headerDisabled" :v-model="colCheckHeader" @change="checkHeaderChange()" />
     </template>
     <template slot="header">
       <div :style="getColumnEl_l_style(columnEl)">
         <span v-for="(l_s, l_i) in getColumnEl_l_s_t('l', columnEl)" :key="l_i">
           <span v-if="l_s !== '\n'">{{ lValue(l_s) }}</span>
-          <br />
+          <br>
         </span>
       </div>
     </template>
@@ -29,46 +30,46 @@
         :column-index="i + columnIndex"
         :prop-set="propSet"
         :tree-props="treeProps"
-      ></swcolumns>
+      />
     </template>
     <template v-if="!columnEl.s" v-slot="scope">
-      <span v-if="columnIndex === 0 && !scope.row[treeProps.children]" :class="`${columnEl.align ? '' : 'noicon-blank'}`"></span>
+      <span v-if="columnIndex === 0 && !scope.row[treeProps.children]" :class="`${columnEl.align ? '' : 'noicon-blank'}`" />
       <!-- order -->
       <template v-if="columnEl.order">
         <span>{{ scope.$index + 1 }}</span>
       </template>
-      <!-- e_n -->
-      <template v-else-if="vif__C('e_n', columnEl, scope.row, scope.$index)">
+      <!-- number -->
+      <template v-else-if="vif__C('number', columnEl, scope.row, scope.$index)">
         <span v-if="!propSet.canedit">{{ pValue(columnEl, scope.row, scope.$index) }}</span>
         <el-input
           v-else
           v-model="scope.row[`${columnEl.p}`]"
           size="mini"
           :disabled="!propSet.canedit"
-          @change="e_n_valueEdit(columnEl, scope.row[columnEl.p], scope.row, scope.$index)"
-          @input="getE_N_Limmit(columnEl, scope.row[columnEl.p], scope.row, scope.$index)"
+          @change="number_valueEdit(columnEl, scope.row[columnEl.p], scope.row, scope.$index)"
+          @input="getnumber_Limmit(columnEl, scope.row[columnEl.p], scope.row, scope.$index)"
         >
           <template v-if="columnEl.preStr" slot="prefix"> {{ columnEl.preStr }} </template>
           <template v-if="columnEl.edStr" slot="suffix"> {{ columnEl.edStr }} </template>
         </el-input>
       </template>
-      <!-- e_t -->
-      <template v-else-if="vif__C('e_t', columnEl, scope.row, scope.$index)">
+      <!-- input -->
+      <template v-else-if="vif__C('input', columnEl, scope.row, scope.$index)">
         <span v-if="!propSet.canedit">{{ pValue(columnEl, scope.row, scope.$index) }}</span>
         <el-input
           v-else
           v-model="scope.row[`${columnEl.p}`]"
           size="mini"
           :disabled="!propSet.canedit"
-          @change="e_t_valueEdit(columnEl, scope.row[columnEl.p], scope.row, scope.$index)"
-          @input="e_t_valueEdit(columnEl, scope.row[columnEl.p], scope.row, scope.$index)"
+          @change="input_valueEdit(columnEl, scope.row[columnEl.p], scope.row, scope.$index)"
+          @input="input_valueEdit(columnEl, scope.row[columnEl.p], scope.row, scope.$index)"
         >
           <template v-if="columnEl.preStr" slot="prefix"> {{ columnEl.preStr }} </template>
           <template v-if="columnEl.edStr" slot="suffix"> {{ columnEl.edStr }} </template>
         </el-input>
       </template>
-      <!-- e_date -->
-      <template v-else-if="vif__C('e_date', columnEl, scope.row, scope.$index)">
+      <!-- date -->
+      <template v-else-if="vif__C('date', columnEl, scope.row, scope.$index)">
         <span v-if="!propSet.canedit">{{ pValue(columnEl, scope.row, scope.$index) }}</span>
         <el-date-picker
           v-else
@@ -81,7 +82,7 @@
           :disabled="columnEl.disabled ? columnEl.disabled : false"
           placeholder="请选择"
           @change="date_valueChange(scope.row[`${columnEl.p}`], columnEl, scope.row, scope.$index)"
-        ></el-date-picker>
+        />
       </template>
       <!-- select -->
       <template v-else-if="vif__C('select', columnEl, scope.row, scope.$index)">
@@ -107,7 +108,7 @@
               :key="i"
               :label="item.name"
               :value="item.value"
-            ></el-option>
+            />
           </template>
         </el-select>
       </template>
@@ -122,8 +123,7 @@
           :disable="pip_transit('button_disable', el, scope.row, scope.$index) || false"
           :type="pip_transit('button_type', el, scope.row, scope.$index) || 'primary'"
           @click="buttonAction(el, scope.row, scope.$index)"
-          >{{ pip_transit('button_t', el, scope.row, scope.$index) || '' }}</el-button
-        >
+        >{{ pip_transit('button_t', el, scope.row, scope.$index) || '' }}</el-button>
       </template>
       <!-- link -->
       <template v-else-if="vif__C('link', columnEl, scope.row, scope.$index)">
@@ -134,8 +134,7 @@
           :disable="pip_transit('link_disable', el, scope.row, scope.$index) || false"
           :type="pip_transit('link_type', el, scope.row, scope.$index) || 'primary'"
           @click="linkAction(el, scope.row, scope.$index)"
-          >{{ pip_transit('link_t', el, scope.row, scope.$index) || '' }}</el-link
-        >
+        >{{ pip_transit('link_t', el, scope.row, scope.$index) || '' }}</el-link>
       </template>
       <!-- trans -->
       <template v-else-if="columnEl.trans">
@@ -147,7 +146,7 @@
           v-model="scope.row[columnEl['checkedp']]"
           :disabled="getDisabled('disabled', columnEl)"
           @change="checkChange('checked', columnEl, scope.row, scope.$index)"
-        ></el-checkbox>
+        />
       </template>
       <!-- p -->
       <template v-else>
@@ -155,7 +154,7 @@
           <template v-if="isArray(pValue(columnEl, scope.row, scope.$index))">
             <span v-for="(p_s, p_i) in transToArr(pValue(columnEl, scope.row, scope.$index))" :key="p_i">
               <span>{{ p_s }}</span>
-              <br />
+              <br>
             </span>
           </template>
           <template v-else>
@@ -178,52 +177,52 @@ export default {
       type: Object,
       default: () => {
         return {}
-      },
+      }
     },
     columnIndex: {
       // ? column的下标
       type: Number,
-      default: 0,
+      default: 0
     },
     treeProps: {
       // ? 树形节点
       type: Object,
       default: () => {
         return {}
-      },
+      }
     },
     propSet: {
       // ? 递归参数集合
       type: Object,
       default: () => {
         return {}
-      },
+      }
     },
     type: {
       // ?el-table-column 的type类型 支持‘selection’
       type: String,
-      default: '',
+      default: ''
     },
     checkHeader: {
       // ? table头部显示全选checkbox
       type: Boolean,
-      default: false,
+      default: false
     },
     headerChecked: {
       // ? table头部全选checkbox的选择值
       type: Boolean,
-      default: false,
+      default: false
     },
 
     levelIndex: {
       // ? 递归组件的层级 用于递归组件间传值
       type: Number,
-      default: 0,
-    },
+      default: 0
+    }
   },
   data() {
     return {
-      colCheckHeader: this.headerChecked,
+      colCheckHeader: this.headerChecked
     }
   },
   created() {},
@@ -257,15 +256,15 @@ export default {
         return false
       }
     },
-    getE_N_Limmit(el, val, row, index) {
+    getnumber_Limmit(el, val, row, index) {
       if (el.point) {
         this.limitInput_PointNumber(el, val, row, index)
       } else {
-        this.e_n_valueEdit(el, val, row, index)
+        this.number_valueEdit(el, val, row, index)
       }
     },
-    // todo 'e_n'编辑值改变时触发方法
-    e_n_valueEdit(el, val, row, index) {
+    // todo 'number'编辑值改变时触发方法
+    number_valueEdit(el, val, row, index) {
       val = val.replace(/[^\d]/g, '')
 
       if (!val || val === '' || `${Number(val)}` === 'NaN') {
@@ -280,8 +279,8 @@ export default {
         return el.iFunc({ val, row, index })
       }
     },
-    // todo'e_t'编辑值改变时触发方法
-    e_t_valueEdit(el, val, row, index) {
+    // todo'input'编辑值改变时触发方法
+    input_valueEdit(el, val, row, index) {
       if (el.eFunc) {
         return el.eFunc({ val, row, index })
       }
@@ -444,6 +443,15 @@ export default {
         return el.s ? 'center' : getAlignBy_l(el.l)
       }
     },
+    // todo 显示排序 （默认false）
+    getSortable(el) {
+      // if (el.align) { return el.align } else { return el.s ? 'center' : 'left' }
+      if (el.sortable) {
+        return el.sortable
+      } else {
+        return false
+      }
+    },
     // todo 获取hidden 属性 用于按钮显示
     getHidden(el, row, index) {
       if (el.hidden === 'undefined' || el.hidden === null) {
@@ -493,8 +501,8 @@ export default {
       } else {
         return false
       }
-    },
-  },
+    }
+  }
 }
 </script>
 <style scoped>

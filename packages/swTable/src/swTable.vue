@@ -16,6 +16,7 @@
       :default-expand-all="defaultExpandAll"
       :tree-props="treeProps"
       tooltip-effect="dark"
+      @row-click="rowclick"
     >
       <swcolumns
         v-for="(el, i) in options"
@@ -26,7 +27,7 @@
         :column-index="i"
         :prop-set="propSet"
         :tree-props="treeProps"
-      ></swcolumns>
+      />
     </el-table>
   </div>
 </template>
@@ -38,12 +39,12 @@ import swcolumns from './swColumn'
 // ps 为父及递归子组件的所有props值，由此定义并传入
 const ps = {
   canedit: true, // 可编辑
-  textSet: {}, // 文本集合
+  textSet: {} // 文本集合
 }
 export default {
-  name: 'vue-sw-table',
+  name: 'VueSwTable',
   components: {
-    swcolumns,
+    swcolumns
   },
   props: {
     // 父组件传入的数据源可以用此  ；也可以用 'data'中的 'listdata' 父组件外部调取'refs'赋值
@@ -51,50 +52,55 @@ export default {
       type: Array,
       default: () => {
         return null
-      },
+      }
     },
     rowKey: {
       // 当有树结构 时此值为'rowKey'绑定值，默认为'id'
       type: String,
-      default: 'id',
+      default: 'id'
+    },
+    rowClick: {
+      // 点击一行方法
+      type: Function,
+      default: () => {}
     },
     treeProps: {
       // 树形结构 'children' 为子数组参数名 'hasChildren' 必须手动设置为空值 ''
       type: Object,
       default: () => {
         return { children: '', hasChildren: '' }
-      },
+      }
     },
     colortips: {
       // 有关颜色乱八七糟的
       type: String,
-      default: null,
+      default: null
     },
     options: {
       // 表格格式
       type: Array,
       default: () => {
         return []
-      },
+      }
     },
     loading: {
       // 加载中
       type: Boolean,
-      default: false,
+      default: false
     },
     propSet: {
       // 传递给每列的集合 在此文件上方'ps'中添加
       type: Object,
       default: () => {
         return {
-          ...ps,
+          ...ps
         }
-      },
+      }
     },
     defaultExpandAll: {
       // 默认展开所有子节点（有'childData'时）
       type: Boolean,
-      default: true,
+      default: true
     },
     // eslint-disable-next-line vue/require-default-prop
     height: [String, Number],
@@ -104,7 +110,7 @@ export default {
       // default: () => { return { 'background-color': '#F5F7FA', 'border-color': 'gray' } }
       default: () => {
         return {}
-      },
+      }
     },
     tableStyle: {
       // 表格的样式（可单独设置）
@@ -112,14 +118,14 @@ export default {
       // default: () => { return { 'border-color': 'gray', 'border-left': '1px solid gray', 'border-right': '1px solid gray', 'border-top': '1px solid gray', 'border-bottom': '1px solid gray', 'width': '100%' } }
       default: () => {
         return {}
-      },
+      }
     },
     rowStyle: {
       // 每行'row'的样式（可单独设置）
       type: Object,
       default: () => {
         return {}
-      },
+      }
     },
     cellStyle: {
       // 每个单元格'cell'样式（可单独设置）
@@ -127,13 +133,13 @@ export default {
       // default: () => { return { 'border-color': 'gray' } }
       default: () => {
         return {}
-      },
-    },
+      }
+    }
   },
   data() {
     return {
       listdata: [],
-      headerChecked: false,
+      headerChecked: false
     }
   },
   watch: {
@@ -142,15 +148,15 @@ export default {
         this.$nextTick(() => {
           this.$refs.table.doLayout()
         })
-      },
+      }
     },
     listdata: {
       handler() {
         this.$nextTick(() => {
           this.$refs.table.doLayout()
         })
-      },
-    },
+      }
+    }
   },
   mounted() {
     this.bindBusNoti() // 绑定公共通信
@@ -167,6 +173,10 @@ export default {
     // bus.$off('noti_bus_link')
   },
   methods: {
+    // todo 点击一行触发的方法
+    rowclick(row, column, event) {
+      this.rowClick({ row, column, event })
+    },
     bindBusNoti() {
       // 注册和递归组件的公共通信 (在'mounted'挂载后注册)
       bus.$on('noti_bus_link', ({ el, row, index }) => {
@@ -202,8 +212,8 @@ export default {
     tableRowClassName({ row, rowIndex }) {
       // 颜色乱八七糟的（改变每个'row'背景颜色）
       return getTableRowClass(row, rowIndex, this.colortips)
-    },
-  },
+    }
+  }
 }
 </script>
 <style scope="scss">

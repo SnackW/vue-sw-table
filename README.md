@@ -8,7 +8,7 @@
 
 ```
  当前版本支持大部分的表格操作，例如：
- 显示文本（p）、编辑数字（e_n）、编辑文本（e_t）、日期选择（e_date）、下拉选择（select）、
+ 显示文本（p）、编辑数字（number）、编辑文本（input）、日期选择（date）、下拉选择（select）、
  多选（check）、文本链接（link）、按钮（button）等...
 ```
 
@@ -59,7 +59,7 @@ data() {
       options:[
         {l:'序号',order:true,width:70 },
         {l:'姓名',p:'name'},
-        {l:'年龄',p:'age',e_n:true},
+        {l:'年龄',p:'age',number:true},
         {l:'性别',p:'sex'},
         {l:'电话',p:'tel'},
       ],
@@ -98,13 +98,13 @@ options: [
             }
           },
         },
-        { l: '年龄', p: 'age', e_n: true, width: 80 },
+        { l: '年龄', p: 'age', number: true, width: 80 },
         { l: '性别', p: 'sex', width: 80 },
         {
           l: '电话',
           p: 'tel',
           width: 120,
-          e_t: ({ row, index }) => {
+          input: ({ row, index }) => {
             console.log(row)
             return !![0, 1, 2].includes(index)
           },
@@ -112,7 +112,7 @@ options: [
         {
           l: '生日',
           p: 'brithday',
-          e_date: true,
+          date: true,
           datetype: 'date',
           format: 'yyyy-MM-dd',
           valueFormat: 'yyyy-MM-dd',
@@ -208,7 +208,7 @@ options: [
 
 `{s:[{l:'',p:''},{l:'',p:''}]}`
 
-### e_n
+### number
 
 > 只可编辑-数字 文本框
 >
@@ -220,13 +220,13 @@ options: [
 >
 > --- point:1 (or true) 设置此属性 则可编辑内容为浮点型 保留小数据后为 point 设置的位数（为 true 时默认两位）
 
-`{e_n:true,eFunc:({val,row,index})=>{ console.log(val,row,index) }}`
+`{number:true,eFunc:({val,row,index})=>{ console.log(val,row,index) }}`
 
-`{e_n:true,iFunc:({val,row,index})=>{ console.log(val,row,index) }}`
+`{number:true,iFunc:({val,row,index})=>{ console.log(val,row,index) }}`
 
-`{e_n:true,point: 2}`
+`{number:true,point: 2}`
 
-### e_t
+### input
 
 > 可编辑-字符串 文本框
 >
@@ -236,9 +236,9 @@ options: [
 >
 > --- ifunc (放弃焦点回调) 该函数可以处理编辑后的大部分操作 （例如输入本文后自动保存）
 
-`{e_t:true,eFunc:({val,row,index})=>{}}`
+`{input:true,eFunc:({val,row,index})=>{}}`
 
-`{e_t:true,iFunc:({val,row,index})=>{}}`
+`{input:true,iFunc:({val,row,index})=>{}}`
 
 ### button
 
@@ -301,7 +301,7 @@ options: [
 
 `{ l: '', checkedp: 'checked', checkHeader: true, check: ({ row }) => { return true }, width: 40, align: 'center' },`
 
-### e_date 日期选择器
+### date 日期选择器
 
 > valueFormat 值显示格式
 >
@@ -311,7 +311,7 @@ options: [
 >
 > e_style:{width:120} datepicker 的 style 为对象 默认{width:120}
 
-`{ l: '', e_date : true, valueFormat: 'yyyyMMdd', format: 'yyyyMMdd',e_style: {width:'120px'}},`
+`{ l: '', date : true, valueFormat: 'yyyyMMdd', format: 'yyyyMMdd',e_style: {width:'120px'}},`
 
 ### select 选择器
 
@@ -359,6 +359,12 @@ options: [
 `{style: {'font-size':15+'px'}}`
 
 `{style: ({ row }) => { return {'font-size':row.size+'px'}}}`
+
+### sortable 升降序
+
+>  默认 false
+
+`{sortable: true}`
 
 ## #
 > 坐标沈阳、有问题欢迎一起讨论：
