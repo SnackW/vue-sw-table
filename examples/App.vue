@@ -96,7 +96,7 @@ export default {
             {
               l: '超文本',
               link: true,
-              link_t: ({ row }) => {
+              content: ({ row }) => {
                 return row.name
               },
               width: 120
@@ -107,22 +107,29 @@ export default {
               hidden: ({ index }) => {
                 return !![0, 1, 2, 3, 4, 5, 6].includes(index)
               },
-              button_t: ({ row }) => {
+              content: ({ row }) => {
                 return row.name
               },
-              button_type: ({ index }) => {
+              type: ({ index }) => {
                 return [0, 1, 2].includes(index) ? 'danger' : 'primary'
               },
-              button_Func: ({ row, index }) => {
+              func: ({ row, index }) => {
                 console.log('点击了' + index + '行：' + row)
+              },
+              disabled: ({ row, index }) => {
+                if (index % 2 === 0) {
+                  return true
+                } else {
+                  return false
+                }
               }
             },
 
             {
               l: '多个',
               s: [
-                { l: '多个超文本', link: [{ link_t: 'link1' }, { link_t: 'link3' }, { link_t: 'link3' }], gutter: 20 },
-                { l: '多个按钮', button: [{ button_t: 'btn1' }, { button_t: 'btn2' }], gutter: 10 }
+                { l: '多个超文本', link: [{ content: 'link1' }, { content: 'link3' }, { content: 'link3' }], gutter: 20 },
+                { l: '多个按钮', button: [{ content: 'btn1' }, { content: 'btn2' }], gutter: 10 }
               ]
             }
           ]

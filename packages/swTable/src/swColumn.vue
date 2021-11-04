@@ -120,10 +120,10 @@
           :key="i"
           :size="el.button_size || 'mini'"
           :style="{ 'margin-right': `${columnEl.gutter ? columnEl.gutter : 0}` + 'px' }"
-          :disable="pip_transit('button_disable', el, scope.row, scope.$index) || false"
-          :type="pip_transit('button_type', el, scope.row, scope.$index) || 'primary'"
+          :disabled="pip_transit('disabled', el, scope.row, scope.$index) || false"
+          :type="pip_transit('type', el, scope.row, scope.$index) || 'primary'"
           @click="buttonAction(el, scope.row, scope.$index)"
-        >{{ pip_transit('button_t', el, scope.row, scope.$index) || '' }}</el-button>
+        >{{ pip_transit('content', el, scope.row, scope.$index) || '' }}</el-button>
       </template>
       <!-- link -->
       <template v-else-if="vif__C('link', columnEl, scope.row, scope.$index)">
@@ -131,10 +131,10 @@
           v-for="(el, i) in getForArr('link', columnEl)"
           :key="i"
           :style="{ 'margin-right': `${columnEl.gutter ? columnEl.gutter : 0}` + 'px' }"
-          :disable="pip_transit('link_disable', el, scope.row, scope.$index) || false"
-          :type="pip_transit('link_type', el, scope.row, scope.$index) || 'primary'"
+          :disabled="pip_transit('disabled', el, scope.row, scope.$index) || false"
+          :type="pip_transit('type', el, scope.row, scope.$index) || 'primary'"
           @click="linkAction(el, scope.row, scope.$index)"
-        >{{ pip_transit('link_t', el, scope.row, scope.$index) || '' }}</el-link>
+        >{{ pip_transit('content', el, scope.row, scope.$index) || '' }}</el-link>
       </template>
       <!-- trans -->
       <template v-else-if="columnEl.trans">
@@ -379,16 +379,16 @@ export default {
     },
     // todo 触发名为'noti_bus_link'的公共通讯 传入参数 '{ el, row, index }'
     linkAction(el, row, index) {
-      if (el.link_Func) {
-        return el.link_Func({ el, row, index })
+      if (el.func) {
+        return el.func({ el, row, index })
       } else {
         bus.$emit('noti_bus_link', { el, row, index })
       }
     },
     // todo 默认触发button_Func 没有配置则触发名为'noti_bus_button'的公共通讯 传入参数 '{ el, row, index }'
     buttonAction(el, row, index) {
-      if (el.button_Func) {
-        return el.button_Func({ el, row, index })
+      if (el.func) {
+        return el.func({ el, row, index })
       } else {
         bus.$emit('noti_bus_button', { el, row, index })
       }

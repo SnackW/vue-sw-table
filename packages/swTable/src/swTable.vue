@@ -11,7 +11,7 @@
       :data="tableData || listdata"
       :style="tableStyle"
       :height="height"
-      border
+      :border="border"
       :row-key="rowKey"
       :default-expand-all="defaultExpandAll"
       :tree-props="treeProps"
@@ -53,6 +53,11 @@ export default {
       default: () => {
         return null
       }
+    },
+    border: {
+      // 表格边框 默认无
+      type: Boolean,
+      default: false
     },
     rowKey: {
       // 当有树结构 时此值为'rowKey'绑定值，默认为'id'
